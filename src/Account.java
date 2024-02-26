@@ -23,9 +23,6 @@ public class Account {
         return bankName;
     }
 
-    public void setBankName(String bankName) {
-        this.bankName = bankName;
-    }
 
     public Account(String name, double balance, String bankName) {
         this.name = name;

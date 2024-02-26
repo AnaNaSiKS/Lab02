@@ -1,6 +1,6 @@
 public interface ATMMachine {
-    public void checkBalance(Account account, User user);
-    public boolean depositBalance(User user, double money);
-    public boolean withdraw(User user, double money);
-    public boolean transferMoney(User inUser, User outUser, double money);
+    public void checkBalance(User user, Account account );
+    public void depositBalance(User user, Account account, double money);
+    public void withdraw(User user,Account account, double money);
+    public void transferMoney(User inUser,Account inAccount, User outUser,Account outAccount, double money);
 }

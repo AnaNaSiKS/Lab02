@@ -1,26 +1,17 @@
 public class User {
-    String firstName;
-    String name;
-    int id;
-    String pin;
+    private String firstName;
+    private String name;
+    private  int id;
+    private String pin;
 
     public String getFirstName(){
         return firstName;
     }
-    public void setFirstName(String firstName){
-        this.firstName = firstName;
-    }
     public String getName() {
         return name;
     }
-    public void setName(String name) {
-        this.name = name;
-    }
     public int getId() {
         return id;
-    }
-    public void setId(int id) {
-        this.id = id;
     }
     public String getPin() {
         return pin;
@@ -29,13 +20,21 @@ public class User {
         this.pin = pin;
     }
 
-    public User(String firstName, String name, int id, String pin) {
+    public User(String firstName, String name,int id, String pin) {
         this.firstName = firstName;
         this.name = name;
-        this.id = id;
         this.pin = pin;
+        this.id = id;
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "firstName='" + firstName + '\'' +
+                ", name='" + name + '\'' +
+                ", pin='" + pin + '\'' +
+                ", id='" + id +'\'' +
+                '}';
+    }
 }
 
