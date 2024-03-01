@@ -1,6 +1,10 @@
+import java.util.Scanner;
+
 public interface ATMMachine {
-    public void checkBalance(User user, Account account );
-    public void depositBalance(User user, Account account, double money);
-    public void withdraw(User user,Account account, double money);
-    public void transferMoney(User inUser,Account inAccount, User outUser,Account outAccount, double money);
+    public void checkBalance(User user);
+    public void depositBalance(User user, double money);
+    public void withdraw(User user, double money);
+    public void transferMoney(User inUser, User outUser, double money);
+    public boolean checkPin (User user);
+    public Account chooseAccount(User user);
 }

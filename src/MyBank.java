@@ -1,22 +1,24 @@
 import javax.swing.*;
+import java.lang.annotation.Documented;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class MyBank implements ATMMachine {
-    public void checkBalance(User user, Account account ) {
+
+    public void checkBalance(User user) {
         if (checkPin(user))
             System.out.println(" Текущий баланс: " +account.balance);
     }
 
-    public void depositBalance(User user, Account account, double money) {
+    public void depositBalance(User user, double money) {
         if (checkPin(user)){
             account.setBalance(account.getBalance() + money);
             System.out.println(" Текущий баланс: " +account.balance);
         }
     }
 
-    public void withdraw(User user,Account account, double money) {
+    public void withdraw(User user, double money) {
         if (checkPin(user)){
             if (account.getBankName().equals("MyBank")) {
                 if (account.getBalance() >= money){
@@ -35,7 +37,7 @@ public class MyBank implements ATMMachine {
         }
     }
 
-    public void transferMoney(User inUser, Account inAccount, User outUser,Account outAccount, double money) {
+    public void transferMoney(User inUser, User outUser,double money) {
         if (checkPin(inUser)){
             if (inAccount.getBalance() >= money){
                 inAccount.setBalance(inAccount.getBalance() - money);
@@ -47,13 +49,29 @@ public class MyBank implements ATMMachine {
             else System.out.println("Недостаточно средств");
         }
     }
-
-    public boolean checkPin (User user){
+    public boolean checkPin(User user){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите пин-код");
         if (user.getPin().equals(scanner.next()))
             return true;
         System.out.println("Неверный пин-код");
         return false;
+    }
+
+    @Override
+    public Account chooseAccount(User user) {
+        if (user.getAccounts().size() > 1) {
+            int i = 1;
+            for(Account account : user.getAccounts()){
+                System.out.println(i + " " + account.toString());
+                i++;
+            }
+            Scanner scanner = new Scanner(System.in);
+            return user.getAccounts().get(scanner.nextInt() - 1);
+        }
+        else if (!user.getAccounts().isEmpty()){
+            return null;
+        }
+        else return user.getAccounts().getFirst();
     }
 }

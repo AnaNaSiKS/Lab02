@@ -1,7 +1,11 @@
+import java.util.ArrayList;
+
 public class Account {
     String name;
     double balance;
     String bankName;
+
+    ArrayList<User> users;
 
     public String getName() {
         return name;
@@ -24,9 +28,15 @@ public class Account {
     }
 
 
-    public Account(String name, double balance, String bankName) {
+    public Account(String name, double balance, String bankName, ArrayList<User> users) {
         this.name = name;
         this.balance = balance;
         this.bankName = bankName;
+        this.users = users;
+    }
+
+    @Override
+    public String toString() {
+        return "Название счета: " + name + "Баланс " + balance;
     }
 }
