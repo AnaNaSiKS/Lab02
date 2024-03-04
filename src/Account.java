@@ -37,6 +37,6 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Название счета: " + name + "Баланс " + balance;
+        return "Название счета: " + name + " Баланс: " + balance;
     }
 }
