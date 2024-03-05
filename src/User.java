@@ -39,12 +39,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "firstName='" + firstName + '\'' +
-                ", name='" + name + '\'' +
-                ", pin='" + pin + '\'' +
-                ", id='" + id +'\'' +
-                '}';
+        return firstName + " " + name;
     }
 }
 
